@@ -112,6 +112,27 @@ section.block{padding-block:4rem}
 
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.2rem}
 .card{background:var(--paper);border:1px solid var(--line);border-radius:8px;display:flex;flex-direction:column;overflow:hidden}
+.card-img{position:relative;display:block;width:100%;aspect-ratio:4/3;padding:0;border:0;border-bottom:1px solid var(--line);background:#fff;cursor:zoom-in}
+.card-img img{width:100%;height:100%;object-fit:contain;padding:.6rem;transition:transform .25s ease}
+.card-img:hover img{transform:scale(1.04)}
+.card-img .count{position:absolute;right:.6rem;bottom:.6rem;background:rgba(15,29,51,.85);color:#fff;font:500 .72rem/1 var(--f-mono);letter-spacing:.06em;padding:.35rem .5rem;border-radius:4px}
+.card-noimg{aspect-ratio:4/3;display:grid;place-items:center;border-bottom:1px solid var(--line);background:repeating-linear-gradient(-45deg,var(--bg) 0 14px,var(--paper) 14px 28px);color:var(--muted);font:500 .8rem/1.4 var(--f-mono);text-align:center;padding:1rem}
+.tag-img{display:block;width:100%;max-height:190px;object-fit:contain;background:#fff;border-radius:6px;margin:.9rem 0 .6rem}
+
+/* visor de fotos */
+dialog.viewer{border:0;padding:0;background:transparent;max-width:min(920px,100vw - 32px);width:100%;color:#fff}
+dialog.viewer::backdrop{background:rgba(6,12,22,.88)}
+.viewer-main{position:relative;background:#fff;border-radius:8px;overflow:hidden}
+.viewer-main img{display:block;width:100%;height:min(70vh,640px);object-fit:contain}
+.viewer-bar{display:flex;justify-content:space-between;align-items:center;gap:1rem;margin-bottom:.6rem}
+.viewer-bar h3{margin:0;font:800 1.5rem/1.05 var(--f-display);text-transform:uppercase}
+.viewer-btn{border:0;border-radius:50%;width:44px;height:44px;background:var(--yellow);color:var(--navy);font:800 1.4rem/1 var(--f-body);cursor:pointer;flex:none}
+.viewer-main .viewer-btn{position:absolute;top:50%;transform:translateY(-50%);box-shadow:0 4px 12px rgba(0,0,0,.25)}
+.viewer-main .prev{left:.6rem}.viewer-main .next{right:.6rem}
+.thumbs{display:flex;gap:.5rem;overflow-x:auto;margin-top:.6rem;padding-bottom:.3rem}
+.thumbs button{flex:none;width:72px;height:72px;padding:0;border:2px solid transparent;border-radius:6px;background:#fff;cursor:pointer;overflow:hidden}
+.thumbs button[aria-current="true"]{border-color:var(--yellow)}
+.thumbs img{width:100%;height:100%;object-fit:contain}
 .card-top{display:flex;justify-content:space-between;align-items:flex-start;gap:.8rem;padding:1.1rem 1.2rem .2rem}
 .card .mk{font:800 .9rem/1 var(--f-display);letter-spacing:.12em;text-transform:uppercase;color:var(--red)}
 .card .cat{font:500 .72rem/1 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:.35rem}
@@ -205,6 +226,7 @@ footer a{color:#fff}
           <span class="brandline">Vermont · Irvine</span>
           <span class="warranty">Garantía <b>3</b> años</span>
         </div>
+        <img class="tag-img" src="fotos/soldadora-vermont-1.jpg" alt="Soldadora MIG 250 Vermont con sus accesorios">
         <h2>Soldadora MIG 250 con gas</h2>
         <p class="sub">Ideal para trabajo pesado. Equipo portátil y resistente.</p>
         <ul class="specs">
@@ -244,7 +266,9 @@ footer a{color:#fff}
         <button class="chip" id="f-soldadura" data-f="soldadura" aria-pressed="false">Soldadura</button>
         <button class="chip" id="f-inalambrica" data-f="inalambrica" aria-pressed="false">Inalámbricas</button>
         <button class="chip" id="f-gasolina" data-f="gasolina" aria-pressed="false">A gasolina</button>
+        <button class="chip" id="f-construccion" data-f="construccion" aria-pressed="false">Construcción</button>
         <button class="chip" id="f-medicion" data-f="medicion" aria-pressed="false">Medición</button>
+        <button class="chip" id="f-molinos" data-f="molinos" aria-pressed="false">Molinos</button>
       </div>
 
       <div class="grid" id="grid"></div>
@@ -322,56 +346,88 @@ footer a{color:#fff}
   <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></svg>
 </a>
 
+<dialog class="viewer" id="viewer" aria-labelledby="viewer-title">
+  <div class="viewer-bar">
+    <h3 id="viewer-title"></h3>
+    <button class="viewer-btn close" type="button" aria-label="Cerrar">×</button>
+  </div>
+  <div class="viewer-main">
+    <img id="viewer-img" src="" alt="">
+    <button class="viewer-btn prev" type="button" aria-label="Foto anterior">‹</button>
+    <button class="viewer-btn next" type="button" aria-label="Foto siguiente">›</button>
+  </div>
+  <div class="thumbs" id="viewer-thumbs"></div>
+</dialog>
+
 <script>
+// fotos/<slug>-1.jpg … <slug>-N.jpg, más <slug>-afiche.jpg si existe
+const ph = (slug, n, afiche = true) => [
+  ...Array.from({length: n}, (_, i) => `fotos/${slug}-${i + 1}.jpg`),
+  ...(afiche ? [`fotos/${slug}-afiche.jpg`] : [])
+];
+
 const PRODUCTS = [
-  {cat:"soldadura", catLabel:"Soldadura", brand:"Vermont", name:"Soldadora MIG 250 con gas", g:3,
+  {cat:"soldadura", catLabel:"Soldadura", brand:"Vermont", name:"Soldadora MIG 250 con gas", g:3, photos:ph("soldadora-vermont",4),
    specs:[["Proceso","MIG con gas · Barra"],["Voltaje","220 V"],["Ciclo de trabajo","6 h"],["Obsequio","Rollo 5 kg"]],
    use:"Ideal para trabajo pesado. Incluye porta electrodo y masa."},
-  {cat:"soldadura", catLabel:"Soldadura", brand:"Irvine", name:"Soldadora MIG 250 con gas", g:3,
+  {cat:"soldadura", catLabel:"Soldadura", brand:"Irvine", name:"Soldadora MIG 250 con gas", g:3, photos:ph("soldadora-irvine",3),
    specs:[["Proceso","MIG con gas · Barra"],["Voltaje","220 V"],["Ciclo de trabajo","6 h"],["Obsequio","Rollo 5 kg"]],
    use:"Equipo portátil y resistente. Incluye porta electrodo y masa."},
-  {cat:"inalambrica", catLabel:"Inalámbrica", brand:"Irvine", name:"Mini motosierra inalámbrica", g:2,
-   specs:[["Espada","6 in"],["Batería","30 V"],["Incluye","Cadena y cargador"]],
+  {cat:"inalambrica", catLabel:"Inalámbrica", brand:"Irvine", name:"Mini motosierra inalámbrica", g:2, photos:ph("mini-motosierra",4),
+   specs:[["Espada","6 in"],["Batería","30 V"],["Incluye","Cadena, cargador y maletín"]],
    use:"Compacta y práctica, para ramas y palos pequeños."},
-  {cat:"inalambrica", catLabel:"Inalámbrica", brand:"Irvine", name:"Motosierra inalámbrica 12\"", g:2,
-   specs:[["Espada","12 in"],["Batería","Doble · 60 V"],["Cadena","Acero"],["Incluye","Cargador"]],
+  {cat:"inalambrica", catLabel:"Inalámbrica", brand:"Irvine", name:"Motosierra inalámbrica 12\"", g:2, photos:ph("motosierra-inalambrica",4),
+   specs:[["Espada","12 in"],["Batería","Doble · 60 V"],["Cadena","Acero"],["Incluye","Cargador y maletín"]],
    use:"Potencia sin cable para poda y corte de leña."},
-  {cat:"inalambrica", catLabel:"Inalámbrica", brand:"Irvine", name:"Pulidora inalámbrica 4 ½\"", g:3,
-   specs:[["Disco","4 ½ in (115 mm)"],["Baterías","2 × 60 V"],["Incluye","Disco de corte y cargador"]],
+  {cat:"inalambrica", catLabel:"Inalámbrica", brand:"Irvine", name:"Pulidora inalámbrica 4 ½\"", g:3, photos:ph("pulidora",4),
+   specs:[["Disco","4 ½ in (115 mm)"],["Baterías","2 × 60 V"],["Incluye","Disco de corte, cargador y maletín"]],
    use:"Para corte y desbaste en metal, concreto y más."},
-  {cat:"inalambrica", catLabel:"Inalámbrica", brand:"Irvine", name:"Taladro inalámbrico", g:1,
+  {cat:"inalambrica", catLabel:"Inalámbrica", brand:"Irvine", name:"Taladro inalámbrico", g:1, photos:[],
    specs:[["Tipo","Taladro atornillador"],["Alimentación","Batería"]],
    use:"Para perforar y atornillar en casa y en obra."},
-  {cat:"medicion", catLabel:"Medición", brand:"Irvine", name:"Nivel láser 16 líneas", g:3,
-   specs:[["Líneas","16 (verdes, 360°)"],["Baterías","2 incluidas"],["Incluye","Trípode, soporte y gafas"]],
+  {cat:"medicion", catLabel:"Medición", brand:"Irvine", name:"Nivel láser 16 líneas", g:3, photos:ph("nivel-laser",4),
+   specs:[["Líneas","16 (verdes, 360°)"],["Baterías","2 incluidas"],["Incluye","Trípode, soporte, gafas y maletín"]],
    use:"Precisión total en tu proyecto, todo en un solo kit."},
-  {cat:"gasolina", catLabel:"A gasolina", brand:"Fullerton", name:"Hoyadora de concreto", g:2,
+  {cat:"construccion", catLabel:"Construcción", brand:"Irvine", name:"Rompedor de concreto", g:2, photos:ph("rompedor",4),
+   specs:[["Potencia","2 HP"],["Incluye","Broca de pala y caja metálica"],["Uso","Construcción industrial"]],
+   use:"Fuerza rompedora para el trabajo duro."},
+  {cat:"gasolina", catLabel:"A gasolina", brand:"Fullerton", name:"Hoyadora de concreto", g:2, photos:ph("hoyadora",2,false),
    specs:[["Motor","2 tiempos"],["Potencia","3 HP"]],
    use:"Para ahoyar en terreno y concreto. Trabajo duro."},
-  {cat:"gasolina", catLabel:"A gasolina", brand:"Fullerton", name:"Cortasetos a gasolina", g:2,
+  {cat:"gasolina", catLabel:"A gasolina", brand:"Fullerton", name:"Cortasetos a gasolina", g:2, photos:ph("cortasetos",3),
    specs:[["Motor","2 tiempos"],["Potencia","3 HP"],["Incluye","Bolsa de herramientas"]],
    use:"Máximo poder para un corte perfecto en jardines y cercas vivas."},
-  {cat:"gasolina", catLabel:"A gasolina", brand:"Fullerton", name:"Guadaña a gasolina", g:2,
+  {cat:"gasolina", catLabel:"A gasolina", brand:"Fullerton", name:"Guadaña a gasolina", g:2, photos:ph("guadana",4),
    specs:[["Motor","2 tiempos"],["Potencia","3 HP"],["Uso","Pasto y jardines"]],
    use:"Resistencia y rendimiento para trabajo pesado."},
-  {cat:"gasolina", catLabel:"A gasolina", brand:"Fullerton", name:"Motosierra a gasolina", g:2,
-   specs:[["Motor","2 tiempos"]],
-   use:"Para tala y corte de madera gruesa."},
-  {cat:"inalambrica", catLabel:"Demolición", brand:"Irvine", name:"Rompedor de concreto", g:3,
-   specs:[["Uso","Demolición y picado"]],
-   use:"Pregunta por potencia y accesorios disponibles."}
+  {cat:"gasolina", catLabel:"A gasolina", brand:"Fullerton", name:"Motosierra a gasolina", g:2, photos:ph("motosierra-gasolina",3),
+   specs:[["Motor","5800"],["Potencia","3 HP"],["Combustible","Gasolina + aceite 2T"]],
+   use:"Potencia para tala y corte de madera gruesa."},
+  {cat:"molinos", catLabel:"Molinos", brand:"Corona", name:"Molino de 1 caballo · motor Irvine", g:1, photos:["fotos/molino-irvine-1.jpg"],
+   specs:[["Potencia","1 HP"],["Voltaje","110 V"],["Motor","American Irvine"],["Uso","Granos secos"]],
+   use:"Para moler café, maíz, cacao y más granos. Producto importado."},
+  {cat:"molinos", catLabel:"Molinos", brand:"Corona", name:"Molino de 1 caballo · motor en cobre", g:3, gNote:"del motor", photos:["fotos/molino-cobre-1.jpg"],
+   specs:[["Potencia","1 HP"],["Voltaje","110 V"],["Motor","Embobinado en cobre"],["Uso","Granos secos"]],
+   use:"Mayor eficiencia y larga vida útil. Para café, maíz, cacao y más."}
 ];
 
 const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const grid = document.getElementById("grid");
 
 function render(filter){
-  grid.innerHTML = PRODUCTS.filter(p => filter === "todo" || p.cat === filter).map(p => {
+  grid.innerHTML = PRODUCTS.map((p, idx) => ({p, idx})).filter(({p}) => filter === "todo" || p.cat === filter).map(({p, idx}) => {
     const msg = encodeURIComponent(`Hola FerreZamora, quiero cotizar: ${p.name} ${p.brand}`);
+    const media = p.photos.length
+      ? `<button class="card-img" type="button" data-p="${idx}" aria-label="Ver fotos de ${esc(p.name)} ${esc(p.brand)}">
+          <img src="${p.photos[0]}" alt="${esc(p.name)} ${esc(p.brand)}" loading="lazy">
+          ${p.photos.length > 1 ? `<span class="count">${p.photos.length} fotos</span>` : ""}
+        </button>`
+      : `<div class="card-noimg">Foto próximamente<br>Pregunta por WhatsApp</div>`;
     return `<article class="card">
+      ${media}
       <div class="card-top">
         <div><div class="mk">${esc(p.brand)}</div><div class="cat">${esc(p.catLabel)}</div></div>
-        <span class="warranty">Garantía <b>${p.g}</b> ${p.g === 1 ? "año" : "años"}</span>
+        <span class="warranty">Garantía <b>${p.g}</b> ${p.g === 1 ? "año" : "años"}${p.gNote ? " " + p.gNote : ""}</span>
       </div>
       <h3>${esc(p.name)}</h3>
       <ul class="specs">${p.specs.map(([k,v]) => `<li><span>${esc(k)}</span><span>${esc(v)}</span></li>`).join("")}</ul>
@@ -380,6 +436,42 @@ function render(filter){
     </article>`;
   }).join("");
 }
+
+// visor de fotos
+const viewer = document.getElementById("viewer");
+const vImg = document.getElementById("viewer-img");
+const vTitle = document.getElementById("viewer-title");
+const vThumbs = document.getElementById("viewer-thumbs");
+let vPhotos = [], vIdx = 0, vName = "";
+function showPhoto(i){
+  vIdx = (i + vPhotos.length) % vPhotos.length;
+  vImg.src = vPhotos[vIdx];
+  vImg.alt = `${vName}, foto ${vIdx + 1} de ${vPhotos.length}`;
+  vThumbs.querySelectorAll("button").forEach((b, j) => b.setAttribute("aria-current", j === vIdx ? "true" : "false"));
+}
+function openViewer(p){
+  vPhotos = p.photos; vName = `${p.name} ${p.brand}`;
+  vTitle.textContent = vName;
+  vThumbs.innerHTML = vPhotos.map((src, j) => `<button type="button" data-i="${j}" aria-label="Foto ${j + 1}"><img src="${src}" alt="" loading="lazy"></button>`).join("");
+  const multi = vPhotos.length > 1;
+  viewer.querySelectorAll(".prev,.next").forEach(b => b.hidden = !multi);
+  vThumbs.hidden = !multi;
+  showPhoto(0);
+  viewer.showModal();
+}
+grid.addEventListener("click", e => {
+  const b = e.target.closest(".card-img");
+  if (b) openViewer(PRODUCTS[+b.dataset.p]);
+});
+vThumbs.addEventListener("click", e => { const b = e.target.closest("button"); if (b) showPhoto(+b.dataset.i); });
+viewer.querySelector(".prev").addEventListener("click", () => showPhoto(vIdx - 1));
+viewer.querySelector(".next").addEventListener("click", () => showPhoto(vIdx + 1));
+viewer.querySelector(".close").addEventListener("click", () => viewer.close());
+viewer.addEventListener("click", e => { if (e.target === viewer) viewer.close(); });
+viewer.addEventListener("keydown", e => {
+  if (e.key === "ArrowLeft") showPhoto(vIdx - 1);
+  if (e.key === "ArrowRight") showPhoto(vIdx + 1);
+});
 
 document.querySelectorAll(".chip").forEach(btn => btn.addEventListener("click", () => {
   document.querySelectorAll(".chip").forEach(b => b.setAttribute("aria-pressed", b === btn ? "true" : "false"));
