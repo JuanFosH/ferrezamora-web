@@ -11,4 +11,4 @@ nivel-laser, rompedor, hoyadora, cortasetos, guadana, motosierra-gasolina, molin
 Pendiente: taladro (sin foto todavía).
 
 `molino-*-afiche-precio.jpg` son los afiches originales con precio; la página no los muestra
-(los precios se cotizan por WhatsApp). `molino-*-1.jpg` son recortes sin precio.
+(los precios se cotizan por WhatsApp). `molino-*-afiche.jpg` son los mismos afiches con el precio tapado ("Cotiza por WhatsApp").

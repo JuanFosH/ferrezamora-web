@@ -113,6 +113,8 @@ section.block{padding-block:4rem}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.2rem}
 .card{background:var(--paper);border:1px solid var(--line);border-radius:8px;display:flex;flex-direction:column;overflow:hidden}
 .card-img{position:relative;display:block;width:100%;aspect-ratio:4/3;padding:0;border:0;border-bottom:1px solid var(--line);background:#fff;cursor:zoom-in}
+.card-img.tall{aspect-ratio:3/4}
+.card-img.tall img{padding:0}
 .card-img img{width:100%;height:100%;object-fit:contain;padding:.6rem;transition:transform .25s ease}
 .card-img:hover img{transform:scale(1.04)}
 .card-img .count{position:absolute;right:.6rem;bottom:.6rem;background:rgba(15,29,51,.85);color:#fff;font:500 .72rem/1 var(--f-mono);letter-spacing:.06em;padding:.35rem .5rem;border-radius:4px}
@@ -403,10 +405,10 @@ const PRODUCTS = [
   {cat:"gasolina", catLabel:"A gasolina", brand:"Fullerton", name:"Motosierra a gasolina", g:2, photos:ph("motosierra-gasolina",3),
    specs:[["Motor","5800"],["Potencia","3 HP"],["Combustible","Gasolina + aceite 2T"]],
    use:"Potencia para tala y corte de madera gruesa."},
-  {cat:"molinos", catLabel:"Molinos", brand:"Corona", name:"Molino de 1 caballo · motor Irvine", g:1, photos:["fotos/molino-irvine-1.jpg"],
+  {cat:"molinos", catLabel:"Molinos", brand:"Corona", name:"Molino de 1 caballo · motor Irvine", g:1, tall:true, photos:["fotos/molino-irvine-afiche.jpg"],
    specs:[["Potencia","1 HP"],["Voltaje","110 V"],["Motor","American Irvine"],["Uso","Granos secos"]],
    use:"Para moler café, maíz, cacao y más granos. Producto importado."},
-  {cat:"molinos", catLabel:"Molinos", brand:"Corona", name:"Molino de 1 caballo · motor en cobre", g:3, gNote:"del motor", photos:["fotos/molino-cobre-1.jpg"],
+  {cat:"molinos", catLabel:"Molinos", brand:"Corona", name:"Molino de 1 caballo · motor en cobre", g:3, gNote:"del motor", tall:true, photos:["fotos/molino-cobre-afiche.jpg"],
    specs:[["Potencia","1 HP"],["Voltaje","110 V"],["Motor","Embobinado en cobre"],["Uso","Granos secos"]],
    use:"Mayor eficiencia y larga vida útil. Para café, maíz, cacao y más."}
 ];
@@ -418,7 +420,7 @@ function render(filter){
   grid.innerHTML = PRODUCTS.map((p, idx) => ({p, idx})).filter(({p}) => filter === "todo" || p.cat === filter).map(({p, idx}) => {
     const msg = encodeURIComponent(`Hola FerreZamora, quiero cotizar: ${p.name} ${p.brand}`);
     const media = p.photos.length
-      ? `<button class="card-img" type="button" data-p="${idx}" aria-label="Ver fotos de ${esc(p.name)} ${esc(p.brand)}">
+      ? `<button class="card-img${p.tall ? " tall" : ""}" type="button" data-p="${idx}" aria-label="Ver fotos de ${esc(p.name)} ${esc(p.brand)}">
           <img src="${p.photos[0]}" alt="${esc(p.name)} ${esc(p.brand)}" loading="lazy">
           ${p.photos.length > 1 ? `<span class="count">${p.photos.length} fotos</span>` : ""}
         </button>`
