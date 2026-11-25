@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 128" width="1600" height="256">
+  <title>FerreZamora, versión 3, logo para fondo claro</title>
+  <defs><linearGradient id="steel" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f4f6f9"/><stop offset=".55" stop-color="#b8c1cc"/><stop offset="1" stop-color="#7b8796"/></linearGradient><linearGradient id="cyan" x1="0" y1="0" x2=".9" y2="1"><stop offset="0" stop-color="#46e3ff"/><stop offset=".55" stop-color="#17b2ef"/><stop offset="1" stop-color="#0a6fd1"/></linearGradient>
+    <path id="F" d="M0 0h60v20H20v20h30v20H20v40H0z"/>
+    <path id="E" d="M0 0h60v20H20v20h28v20H20v20h40v20H0z"/>
+    <path id="R" fill-rule="evenodd" d="M0 0H60V60H46L62 100H40L26 60H20V100H0ZM20 20V40H40V20Z"/>
+    <path id="Z" d="M0 0h60v20L24 80h36v20H0V80L36 20H0z"/>
+    <path id="A" fill-rule="evenodd" d="M0 18L18 0H42L60 18V100H40V68H20V100H0ZM20 24V48H40V24Z"/>
+    <path id="M" d="M0 0h80v100H60V20H50v50H30V20H20v80H0z"/>
+    <path id="O" fill-rule="evenodd" d="M0 0H60V100H0ZM20 20V80H40V20Z"/>
+  </defs>
+
+  <!-- ícono: tuerca hexagonal -->
+  <g transform="translate(0 4)">
+    <polygon points="116,60 88,108.5 32,108.5 4,60 32,11.5 88,11.5" fill="url(#steel)"/>
+    <polygon points="106,60 83,99.8 37,99.8 14,60 37,20.2 83,20.2" fill="#0b1a33"/>
+    <g transform="translate(46 33) skewX(-12) scale(.54)"><use href="#F" fill="url(#cyan)"/></g>
+    <circle cx="77" cy="77" r="7" fill="none" stroke="#2fc4f5" stroke-width="4.5"/>
+  </g>
+
+  <!-- palabra: FERRE en negro, ZAMORA en azul marino sobre bloque cian -->
+  <g transform="translate(168 14) skewX(-12) scale(.78)">
+    <rect x="346" y="-12" width="458" height="122" fill="#2fc4f5"/>
+    <g fill="#0b1a33">
+      <use href="#F" x="0"/><use href="#E" x="70"/><use href="#R" x="140"/><use href="#R" x="214"/><use href="#E" x="288"/>
+    </g>
+    <g fill="#0b1a33">
+      <use href="#Z" x="358"/><use href="#A" x="428"/><use href="#M" x="498"/><use href="#O" x="588"/><use href="#R" x="658"/><use href="#A" x="730"/>
+    </g>
+  </g>
+
+  <!-- franja azul -->
+  <polygon points="158,96 786,96 780,122 152,122" fill="#0a6fd1"/>
+  <text x="469" y="114.5" text-anchor="middle" fill="#ffffff" font-family="Oswald, 'Arial Narrow', Arial, sans-serif" font-weight="700" font-size="15" letter-spacing="5">FERRETERÍA · HERRAMIENTAS · EQUIPOS</text>
+</svg>

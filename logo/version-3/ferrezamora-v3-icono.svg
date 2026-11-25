@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="512" height="512">
+  <title>FerreZamora versión 3, ícono</title>
+  <defs><linearGradient id="steel" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f4f6f9"/><stop offset=".55" stop-color="#b8c1cc"/><stop offset="1" stop-color="#7b8796"/></linearGradient><linearGradient id="cyan" x1="0" y1="0" x2=".9" y2="1"><stop offset="0" stop-color="#46e3ff"/><stop offset=".55" stop-color="#17b2ef"/><stop offset="1" stop-color="#0a6fd1"/></linearGradient></defs>
+  <!-- Tuerca hexagonal: borde de acero, cara azul marino, F azul y orificio cian -->
+  <polygon points="116,60 88,108.5 32,108.5 4,60 32,11.5 88,11.5" fill="url(#steel)"/>
+  <polygon points="106,60 83,99.8 37,99.8 14,60 37,20.2 83,20.2" fill="#0b1a33"/>
+  <g transform="translate(46 33) skewX(-12) scale(.54)">
+    <path d="M0 0h60v20H20v20h30v20H20v40H0z" fill="url(#cyan)"/>
+  </g>
+  <circle cx="77" cy="77" r="7" fill="none" stroke="#2fc4f5" stroke-width="4.5"/>
+</svg>

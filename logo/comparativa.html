@@ -11,7 +11,7 @@
 :root{--black:#0c0c0c;--coal:#161616;--coal-2:#202020;--edge:#2c2c2c;--yellow:#ffd000;--red:#e3161b;--white:#fff;--muted:#b9b9b9;
   --navy:#0b1a33;--cyan:#2fc4f5;--accent:var(--yellow);
   --f-title:"Anton","Arial Narrow",Impact,sans-serif;--f-brush:"Archivo Black","Arial Black",sans-serif;--f-label:"Oswald","Arial Narrow",sans-serif;--f-body:"Barlow",system-ui,sans-serif;color-scheme:dark}
-body[data-v="2"]{--accent:var(--cyan)}
+body[data-v="2"],body[data-v="3"]{--accent:var(--cyan)}
 *{box-sizing:border-box}
 [hidden]{display:none!important}
 html{scroll-behavior:smooth}
@@ -31,6 +31,8 @@ main.wrap{padding-block:2rem 4rem}
 .switch button small{display:block;font:500 .62rem/1 var(--f-label);letter-spacing:.12em;margin-top:.3rem;opacity:.8}
 .switch #b1[aria-pressed="true"]{background:var(--yellow);border-color:var(--yellow);color:var(--black)}
 .switch #b2[aria-pressed="true"]{background:var(--cyan);border-color:var(--cyan);color:var(--navy)}
+.switch #b3[aria-pressed="true"]{background:linear-gradient(135deg,#46e3ff,#0a6fd1);border-color:#17b2ef;color:#fff}
+@media (max-width:520px){.switch{width:100%}.switch button{flex:1;padding:.7rem .5rem;font-size:.9rem}.switch button small{font-size:.55rem}}
 
 .intro{color:var(--muted);margin:0 0 1.6rem;max-width:52rem}
 h2{font:400 1.7rem/1 var(--f-title);text-transform:uppercase;margin:0 0 .3rem}
@@ -106,12 +108,12 @@ h2 em{font-style:normal;color:var(--accent)}
 /* resumen */
 .summary{margin-top:3.4rem}
 .tbl{overflow-x:auto}
-table{width:100%;border-collapse:collapse;font-size:.95rem;min-width:560px}
+table{width:100%;border-collapse:collapse;font-size:.95rem;min-width:720px}
 th,td{text-align:left;padding:.7rem .8rem;border-bottom:1px solid var(--edge);vertical-align:top}
 th{font:600 .8rem/1 var(--f-label);letter-spacing:.12em;text-transform:uppercase}
-th.c1{color:var(--yellow)}th.c2{color:var(--cyan)}
-td:first-child{font:600 .85rem/1.3 var(--f-label);letter-spacing:.06em;text-transform:uppercase;color:#ddd;width:22%}
-body[data-v="1"] td.c1,body[data-v="2"] td.c2{background:rgba(255,255,255,.04);color:#fff}
+th.c1{color:var(--yellow)}th.c2{color:var(--cyan)}th.c3{color:#6fb6ff}
+td:first-child{font:600 .85rem/1.3 var(--f-label);letter-spacing:.06em;text-transform:uppercase;color:#ddd;width:16%}
+body[data-v="1"] td.c1,body[data-v="2"] td.c2,body[data-v="3"] td.c3{background:rgba(255,255,255,.05);color:#fff}
 .verdict{margin-top:2rem;border-left:4px solid var(--yellow);padding:.2rem 0 .2rem 1rem;color:#ddd;max-width:56rem}
 .verdict b{color:#fff}
 @media (prefers-reduced-motion:reduce){.view{animation:none}html{scroll-behavior:auto}}
@@ -125,12 +127,13 @@ body[data-v="1"] td.c1,body[data-v="2"] td.c2{background:rgba(255,255,255,.04);c
     <div class="switch" role="group" aria-label="Elegir versión del logo">
       <button id="b1" type="button" aria-pressed="true" aria-controls="view-1">Versión 1<small>Estilo afiches</small></button>
       <button id="b2" type="button" aria-pressed="false" aria-controls="view-2">Versión 2<small>Esencia actual</small></button>
+      <button id="b3" type="button" aria-pressed="false" aria-controls="view-3">Versión 3<small>Tuerca en azul</small></button>
     </div>
   </div>
 </div>
 
 <main class="wrap">
-  <p class="intro">Toca <b>Versión 1</b> o <b>Versión 2</b> para cambiar de propuesta. Verás primero los logos solos y luego cómo se verían en la página web de la tienda.</p>
+  <p class="intro">Toca <b>Versión 1</b>, <b>Versión 2</b> o <b>Versión 3</b> para cambiar de propuesta. Verás primero los logos solos y luego cómo se verían en la página web de la tienda.</p>
 
   <!-- VERSIÓN 1 -->
   <section class="view" id="view-1" aria-label="Versión 1">
@@ -197,9 +200,9 @@ body[data-v="1"] td.c1,body[data-v="2"] td.c2{background:rgba(255,255,255,.04);c
     <div>
       <h2>Versión 2 · <em>en la web</em></h2>
       <p class="sub">Puedes verla en la web tal como está hoy o con la web adaptada a sus colores.</p>
-      <div class="subswitch" role="group" aria-label="Colores de la web">
-        <button id="s-actual" type="button" aria-pressed="true">Web actual</button>
-        <button id="s-azul" type="button" aria-pressed="false">Web adaptada a azul</button>
+      <div class="subswitch" role="group" aria-label="Colores de la web" data-site="site-v2">
+        <button type="button" data-blue="0" aria-pressed="true">Web actual</button>
+        <button type="button" data-blue="1" aria-pressed="false">Web adaptada a azul</button>
       </div>
       <div class="site" id="site-v2">
         <div class="browser"><span class="dots"><i></i><i></i><i></i></span><img src="version-2/ferrezamora-v2-icono.svg" alt="">FerreZamora<span class="url">ferrezamora.com</span></div>
@@ -218,8 +221,56 @@ body[data-v="1"] td.c1,body[data-v="2"] td.c2{background:rgba(255,255,255,.04);c
         </div>
         <div class="m-foot"><img src="version-2/ferrezamora-v2-horizontal.svg" alt="" style="height:30px"><span>© FerreZamora</span></div>
       </div>
-      <p class="note" id="note-actual"><b>Funciona, pero se nota el cambio:</b> el azul del logo es el único color frío en una página negra, amarilla y roja.</p>
-      <p class="note" id="note-azul" hidden><b>Más coherente con el logo,</b> pero los afiches de los productos siguen siendo negros y amarillos, así que el contraste pasa del logo a las fotos.</p>
+      <p class="note" data-note="0"><b>Funciona, pero se nota el cambio:</b> el azul del logo es el único color frío en una página negra, amarilla y roja.</p>
+      <p class="note" data-note="1" hidden><b>Más coherente con el logo,</b> pero los afiches de los productos siguen siendo negros y amarillos, así que el contraste pasa del logo a las fotos.</p>
+    </div>
+  </section>
+
+  <!-- VERSIÓN 3 -->
+  <section class="view" id="view-3" aria-label="Versión 3" hidden>
+    <div>
+      <h2>Versión 3 · <em>logos solos</em></h2>
+      <p class="sub">El diseño de la versión 1 (tuerca, F y letras de bloque) con los colores del logo actual: azul marino, acero y azul cian.</p>
+      <div class="stack">
+        <div class="tile navy"><span class="lbl">Horizontal · fondo oscuro</span><img src="version-3/ferrezamora-v3-logo.svg" alt="Versión 3 horizontal sobre azul"></div>
+        <div class="tile light"><span class="lbl">Horizontal · fondo claro</span><img src="version-3/ferrezamora-v3-logo-fondo-claro.svg" alt="Versión 3 horizontal sobre blanco"></div>
+        <div class="duo">
+          <div class="tile dark"><span class="lbl">Foto de perfil</span><div class="avatar" style="background:radial-gradient(circle at 50% 40%,#14305c,#0b1a33 65%,#050d1c)"><img src="version-3/ferrezamora-v3-icono.svg" alt="Versión 3 en foto de perfil" style="width:76%"></div></div>
+          <div class="tile dark"><span class="lbl">Tamaños pequeños</span>
+            <div style="display:grid;gap:1rem;justify-items:center">
+              <div class="sizes"><div><img src="version-3/ferrezamora-v3-icono.svg" width="48" height="48" alt=""><small>48</small></div><div><img src="version-3/ferrezamora-v3-icono.svg" width="32" height="32" alt=""><small>32</small></div><div><img src="version-3/ferrezamora-v3-icono.svg" width="16" height="16" alt=""><small>16</small></div></div>
+              <div class="tabbar"><img src="version-3/ferrezamora-v3-icono.svg" alt="">FerreZamora</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <h2>Versión 3 · <em>en la web</em></h2>
+      <p class="sub">Puedes verla en la web tal como está hoy o con la web adaptada a sus colores.</p>
+      <div class="subswitch" role="group" aria-label="Colores de la web" data-site="site-v3">
+        <button type="button" data-blue="0" aria-pressed="true">Web actual</button>
+        <button type="button" data-blue="1" aria-pressed="false">Web adaptada a azul</button>
+      </div>
+      <div class="site" id="site-v3">
+        <div class="browser"><span class="dots"><i></i><i></i><i></i></span><img src="version-3/ferrezamora-v3-icono.svg" alt="">FerreZamora<span class="url">ferrezamora.com</span></div>
+        <div class="m-top"><span>📍 Calle 11 #15-59a, Bogotá</span><span>📞 301 657 4285</span></div>
+        <div class="m-head"><img src="version-3/ferrezamora-v3-logo.svg" alt="Logo versión 3 en el encabezado"><nav><span>Catálogo</span><span>Contacto</span></nav><span class="m-btn">Cotizar</span></div>
+        <div class="m-hero">
+          <div><span class="m-stripe">Ferretería en Bogotá</span><div class="m-h1">Equipos para trabajo <em>pesado</em> y liviano</div><span class="m-brush">Potencia para el trabajo duro</span></div>
+          <figure><img src="../fotos/soldadora-vermont-afiche.jpg" alt=""></figure>
+        </div>
+        <div class="m-cat"><span class="m-stripe">Catálogo</span>
+          <div class="m-cards">
+            <div class="m-card"><img src="../fotos/pulidora-afiche.jpg" alt=""><div><b>Pulidora</b><span>Cotizar</span></div></div>
+            <div class="m-card"><img src="../fotos/guadana-afiche.jpg" alt=""><div><b>Guadaña</b><span>Cotizar</span></div></div>
+            <div class="m-card"><img src="../fotos/nivel-laser-afiche.jpg" alt=""><div><b>Nivel láser</b><span>Cotizar</span></div></div>
+          </div>
+        </div>
+        <div class="m-foot"><img src="version-3/ferrezamora-v3-logo.svg" alt=""><span>© FerreZamora</span></div>
+      </div>
+      <p class="note" data-note="0"><b>Misma forma que la versión 1, otro color:</b> las letras de bloque y la tuerca combinan con la página, pero el azul choca con el amarillo de las franjas y los botones.</p>
+      <p class="note" data-note="1" hidden><b>La más coherente en azul:</b> logo y página comparten colores y estilo de letras. Igual que en la versión 2, los afiches de los productos siguen siendo negros y amarillos.</p>
     </div>
   </section>
 
@@ -229,52 +280,51 @@ body[data-v="1"] td.c1,body[data-v="2"] td.c2{background:rgba(255,255,255,.04);c
     <p class="sub">La columna de la versión que estás viendo queda resaltada.</p>
     <div class="tbl">
       <table>
-        <thead><tr><th></th><th class="c1">Versión 1</th><th class="c2">Versión 2</th></tr></thead>
+        <thead><tr><th></th><th class="c1">Versión 1</th><th class="c2">Versión 2</th><th class="c3">Versión 3</th></tr></thead>
         <tbody>
-          <tr><td>Reconocimiento</td><td class="c1">Imagen nueva. Los clientes actuales tendrían que aprenderla.</td><td class="c2">Se reconoce de inmediato como el logo actual de la tienda.</td></tr>
-          <tr><td>Tamaño pequeño</td><td class="c1">Muy legible: la tuerca y la F se ven claras incluso a 16 px.</td><td class="c2">A 16 px la llave y el martillo se pierden; se ve el rombo con la F.</td></tr>
-          <tr><td>Combina con la web</td><td class="c1">Usa los mismos colores y letras que la página y los afiches.</td><td class="c2">Azul y acero: contrasta con el negro y amarillo de la página.</td></tr>
-          <tr><td>Impresión</td><td class="c1">Colores planos: fácil y barato de imprimir, bordar o pintar en un letrero.</td><td class="c2">Usa degradados: se ve mejor en pantalla; para bordado o sello hay que simplificarlo.</td></tr>
-          <tr><td>Carácter</td><td class="c1">Fuerte, de trabajo pesado, igual que las marcas que vende.</td><td class="c2">Más sobrio y tecnológico; continuidad con lo que ya tiene.</td></tr>
+          <tr><td>Reconocimiento</td><td class="c1">Imagen nueva. Los clientes actuales tendrían que aprenderla.</td><td class="c2">Se reconoce de inmediato como el logo actual de la tienda.</td><td class="c3">Forma nueva, pero con los colores de siempre: se siente familiar.</td></tr>
+          <tr><td>Tamaño pequeño</td><td class="c1">Muy legible: la tuerca y la F se ven claras incluso a 16 px.</td><td class="c2">A 16 px la llave y el martillo se pierden; se ve el rombo con la F.</td><td class="c3">Muy legible, igual que la versión 1.</td></tr>
+          <tr><td>Combina con la web</td><td class="c1">Usa los mismos colores y letras que la página y los afiches.</td><td class="c2">Azul y acero: contrasta con el negro y amarillo de la página.</td><td class="c3">Mismas letras que la página; el azul contrasta con el amarillo.</td></tr>
+          <tr><td>Impresión</td><td class="c1">Colores planos: fácil y barato de imprimir, bordar o pintar en un letrero.</td><td class="c2">Usa degradados: se ve mejor en pantalla; para bordado o sello hay que simplificarlo.</td><td class="c3">Casi plano: solo la tuerca y la F llevan degradado, fácil de pasar a colores planos.</td></tr>
+          <tr><td>Carácter</td><td class="c1">Fuerte, de trabajo pesado, igual que las marcas que vende.</td><td class="c2">Más sobrio y tecnológico; continuidad con lo que ya tiene.</td><td class="c3">Fuerte como la 1 y sobrio como la 2: un punto medio.</td></tr>
         </tbody>
       </table>
     </div>
-    <p class="verdict"><b>En resumen:</b> la versión 1 es la que mejor encaja con la página y con los afiches que ya publica la tienda. La versión 2 es la mejor opción si el cliente quiere que sus clientes actuales reconozcan el logo de siempre.</p>
+    <p class="verdict"><b>En resumen:</b> la versión 1 es la que mejor encaja con la página y con los afiches que ya publica la tienda. La versión 2 es la mejor opción si el cliente quiere que sus clientes actuales reconozcan el logo de siempre. La versión 3 es el punto medio: un logo nuevo y fácil de leer que conserva los colores que la tienda ya usa.</p>
   </section>
 </main>
 
 <script>
-const views = { "1": document.getElementById("view-1"), "2": document.getElementById("view-2") };
-const btns = { "1": document.getElementById("b1"), "2": document.getElementById("b2") };
+const VERSIONS = ["1", "2", "3"];
+const views = Object.fromEntries(VERSIONS.map(v => [v, document.getElementById(`view-${v}`)]));
+const btns = Object.fromEntries(VERSIONS.map(v => [v, document.getElementById(`b${v}`)]));
 
 function show(v, updateHash = true) {
   if (!views[v]) v = "1";
-  for (const k of ["1", "2"]) {
+  for (const k of VERSIONS) {
     views[k].hidden = k !== v;
     btns[k].setAttribute("aria-pressed", k === v ? "true" : "false");
   }
   document.body.dataset.v = v;
   if (updateHash && location.hash !== `#version-${v}`) history.replaceState(null, "", `#version-${v}`);
 }
-const fromHash = () => (location.hash.match(/^#version-([12])$/) || [])[1] || "1";
+const fromHash = () => (location.hash.match(/^#version-([123])$/) || [])[1] || "1";
 
-btns["1"].addEventListener("click", () => show("1"));
-btns["2"].addEventListener("click", () => show("2"));
+for (const v of VERSIONS) btns[v].addEventListener("click", () => show(v));
 window.addEventListener("hashchange", () => show(fromHash(), false));
 show(fromHash(), false);
 
-// Versión 2: web actual / web adaptada a azul
-const site2 = document.getElementById("site-v2");
-const sA = document.getElementById("s-actual"), sB = document.getElementById("s-azul");
-function setBlue(blue) {
-  site2.classList.toggle("blue", blue);
-  sA.setAttribute("aria-pressed", String(!blue));
-  sB.setAttribute("aria-pressed", String(blue));
-  document.getElementById("note-actual").hidden = blue;
-  document.getElementById("note-azul").hidden = !blue;
-}
-sA.addEventListener("click", () => setBlue(false));
-sB.addEventListener("click", () => setBlue(true));
+// Versiones 2 y 3: web actual / web adaptada a azul
+document.querySelectorAll(".subswitch").forEach(group => {
+  const site = document.getElementById(group.dataset.site);
+  const col = group.parentElement;
+  group.querySelectorAll("button").forEach(btn => btn.addEventListener("click", () => {
+    const blue = btn.dataset.blue === "1";
+    site.classList.toggle("blue", blue);
+    group.querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", String(b === btn)));
+    col.querySelectorAll("[data-note]").forEach(n => n.hidden = n.dataset.note !== btn.dataset.blue);
+  }));
+});
 </script>
 </body>
 </html>
