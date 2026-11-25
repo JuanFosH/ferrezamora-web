@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Logo FerreZamora</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@500;600;700&family=Barlow:wght@400;500&display=swap">
+<style>
+:root{--black:#0c0c0c;--coal:#161616;--edge:#2c2c2c;--yellow:#ffd000;--red:#e3161b;--white:#fff;--muted:#b9b9b9;--paper:#f4f1ea;
+  --f-title:"Anton","Arial Narrow",Impact,sans-serif;--f-label:"Oswald","Arial Narrow",sans-serif;--f-body:"Barlow",system-ui,sans-serif;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--black);color:var(--white);font:400 1rem/1.6 var(--f-body)}
+.wrap{max-width:1100px;margin:0 auto;padding:3rem max(16px,env(safe-area-inset-left,0px)) 4rem}
+.stripe{display:inline-block;background:var(--red);color:#fff;font:600 .8rem/1 var(--f-label);letter-spacing:.14em;text-transform:uppercase;padding:.45rem .9rem;clip-path:polygon(0 0,100% 0,calc(100% - 10px) 100%,0 100%)}
+h1{font:400 clamp(2.4rem,6vw,4rem)/1 var(--f-title);text-transform:uppercase;margin:.8rem 0 .6rem}
+h1 em{font-style:normal;color:var(--yellow)}
+h2{font:400 1.9rem/1 var(--f-title);text-transform:uppercase;margin:3.2rem 0 1.2rem}
+p.lead{color:#d6d6d6;max-width:44rem;margin:0}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+@media (max-width:760px){.grid2,.grid3{grid-template-columns:1fr}}
+.tile{border:1px solid var(--edge);padding:2.2rem 1.8rem;display:grid;place-items:center;min-height:220px;position:relative}
+.tile img{width:100%;max-width:520px}
+.tile .lbl{position:absolute;left:.8rem;top:.7rem;font:600 .7rem/1 var(--f-label);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.dark{background:var(--black)}
+.light{background:#fff}.light .lbl{color:#666}
+.yellow{background:var(--yellow)}.yellow .lbl{color:#5a4a00}
+.coal{background:var(--coal)}
+.why{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem;margin-top:1.6rem}
+@media (max-width:760px){.why{grid-template-columns:1fr}}
+.why b{display:block;font:600 1.05rem/1.2 var(--f-label);letter-spacing:.06em;text-transform:uppercase;color:var(--yellow);margin-bottom:.3rem}
+.why p{margin:0;color:var(--muted)}
+/* maquetas */
+.ig{display:flex;align-items:center;gap:1.2rem;background:#000;padding:1.4rem;border:1px solid var(--edge)}
+.ig .av{width:96px;height:96px;border-radius:50%;background:var(--black);display:grid;place-items:center;outline:2px solid #333;outline-offset:3px;flex:none}
+.ig .av img{width:76px}
+.ig b{font:600 1rem/1.2 var(--f-body)}
+.ig span{display:block;color:var(--muted);font-size:.9rem}
+.fav{display:flex;align-items:flex-end;gap:1.2rem}
+.fav img{display:block}
+.fav small{display:block;text-align:center;color:var(--muted);font:500 .7rem/1 var(--f-label);letter-spacing:.1em;margin-top:.4rem}
+.header-mock{background:var(--black);border:1px solid var(--edge);border-bottom:3px solid var(--yellow);padding:.9rem 1.2rem;display:flex;justify-content:space-between;align-items:center;gap:1rem}
+.header-mock img{height:44px;width:auto}
+.header-mock span{background:var(--yellow);color:var(--black);font:700 .85rem/1 var(--f-label);letter-spacing:.08em;padding:.6rem 1rem;clip-path:polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%)}
+.sign{background:linear-gradient(#1b1b1b,#0c0c0c);border:10px solid #2a2a2a;box-shadow:0 0 0 3px #000,0 20px 40px rgba(0,0,0,.6);padding:2rem 2.4rem;display:grid;place-items:center}
+.sign img{width:100%;max-width:640px}
+.card-mock{aspect-ratio:9/5;max-width:100%;background:var(--black);border:1px solid var(--edge);padding:1.4rem;display:flex;flex-direction:column;justify-content:space-between}
+.card-mock img{width:70%}
+.card-mock .info{font:500 .85rem/1.5 var(--f-label);letter-spacing:.06em;color:#ddd;text-transform:uppercase}
+.card-mock .info b{color:var(--yellow);font-weight:600}
+.card-back{aspect-ratio:9/5;max-width:100%;background:var(--yellow);display:grid;place-items:center}
+.card-back img{width:34%}
+.files{margin-top:1rem;font:500 .9rem/1.8 var(--f-label);letter-spacing:.04em;color:var(--muted)}
+.files code{color:var(--yellow);font-family:ui-monospace,Consolas,monospace;font-size:.85rem}
+.colors{display:flex;flex-wrap:wrap;gap:1rem}
+.sw{width:150px;border:1px solid var(--edge)}
+.sw div{height:80px}
+.sw p{margin:0;padding:.6rem .7rem;font:500 .8rem/1.4 var(--f-label);letter-spacing:.06em;text-transform:uppercase}
+.sw p span{display:block;color:var(--muted);font-family:ui-monospace,Consolas,monospace;text-transform:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <span class="stripe">Propuesta de logo</span>
+  <h1>Ferre<em>Zamora</em></h1>
+  <p class="lead">Un logo con el mismo carácter de los afiches de la tienda: negro de taller, amarillo herramienta y una franja roja. Funciona grande en un letrero y pequeño como foto de perfil.</p>
+
+  <div class="why">
+    <div><b>La tuerca</b><p>El ícono es una tuerca hexagonal, la pieza más reconocible de una ferretería. Repite la forma del sello de garantía de los afiches.</p></div>
+    <div><b>La F</b><p>La F en bloque inclinado da la idea de fuerza y movimiento. El orificio rojo recuerda una arandela y conecta con el logo anterior.</p></div>
+    <div><b>Las letras</b><p>Letras de bloque inclinadas, dibujadas a la medida. FERRE en blanco y ZAMORA en amarillo para que el apellido resalte.</p></div>
+  </div>
+
+  <h2>Versiones</h2>
+  <div class="grid2">
+    <div class="tile dark"><span class="lbl">Principal · fondo oscuro</span><img src="ferrezamora-logo.svg" alt="Logo FerreZamora sobre fondo oscuro"></div>
+    <div class="tile light"><span class="lbl">Fondo claro</span><img src="ferrezamora-logo-fondo-claro.svg" alt="Logo FerreZamora sobre fondo claro"></div>
+    <div class="tile yellow"><span class="lbl">Una tinta</span><img src="ferrezamora-logo-una-tinta.svg" alt="Logo FerreZamora a una tinta sobre amarillo"></div>
+    <div class="tile coal"><span class="lbl">Ícono</span><img src="ferrezamora-icono.svg" alt="Ícono FerreZamora" style="max-width:170px"></div>
+  </div>
+
+  <h2>Colores</h2>
+  <div class="colors">
+    <div class="sw"><div style="background:#0c0c0c"></div><p>Negro taller<span>#0C0C0C</span></p></div>
+    <div class="sw"><div style="background:#ffd000"></div><p>Amarillo herramienta<span>#FFD000</span></p></div>
+    <div class="sw"><div style="background:#e3161b"></div><p>Rojo marca<span>#E3161B</span></p></div>
+    <div class="sw"><div style="background:#ffffff"></div><p>Blanco<span>#FFFFFF</span></p></div>
+  </div>
+
+  <h2>Así se ve en uso</h2>
+  <div class="grid2">
+    <div class="ig">
+      <div class="av"><img src="ferrezamora-icono.svg" alt=""></div>
+      <div><b>ferrezamora94</b><span>FerreZamora · Ferretería en Bogotá</span><span>Calle 11 #15-59a</span></div>
+    </div>
+    <div class="ig fav" style="justify-content:center">
+      <div><img src="ferrezamora-icono.svg" width="64" height="64" alt=""><small>64 px</small></div>
+      <div><img src="ferrezamora-icono.svg" width="32" height="32" alt=""><small>32 px</small></div>
+      <div><img src="ferrezamora-icono.svg" width="16" height="16" alt=""><small>16 px</small></div>
+    </div>
+  </div>
+  <div class="header-mock" style="margin-top:1.2rem"><img src="ferrezamora-logo.svg" alt="Logo en el encabezado de la página"><span>COTIZAR</span></div>
+  <div class="sign" style="margin-top:1.2rem"><img src="ferrezamora-logo.svg" alt="Logo en el letrero del local"></div>
+  <div class="grid2" style="margin-top:1.2rem">
+    <div class="card-mock">
+      <img src="ferrezamora-logo.svg" alt="Logo en tarjeta de presentación">
+      <div class="info"><b>Calle 11 #15-59a · Bogotá</b><br>WhatsApp 301 657 4285<br>@ferrezamora94</div>
+    </div>
+    <div class="card-back"><img src="ferrezamora-icono.svg" alt="Ícono en el reverso de la tarjeta"></div>
+  </div>
+
+  <h2>Archivos</h2>
+  <div class="files">
+    <code>ferrezamora-logo.svg</code> · logo principal para fondos oscuros<br>
+    <code>ferrezamora-logo-fondo-claro.svg</code> · para fondos blancos o claros<br>
+    <code>ferrezamora-logo-una-tinta.svg</code> · un solo color: sellos, facturas, bordados<br>
+    <code>ferrezamora-icono.svg</code> · foto de perfil, ícono de la web, stickers
+  </div>
+</div>
+</body>
+</html>

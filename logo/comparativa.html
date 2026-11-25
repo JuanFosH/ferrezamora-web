@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Comparativa de logos FerreZamora</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo+Black&family=Oswald:wght@500;600;700&family=Barlow:wght@400;500;600&display=swap">
+<style>
+:root{--black:#0c0c0c;--coal:#161616;--coal-2:#202020;--edge:#2c2c2c;--yellow:#ffd000;--red:#e3161b;--white:#fff;--muted:#b9b9b9;
+  --navy:#0b1a33;--cyan:#2fc4f5;
+  --f-title:"Anton","Arial Narrow",Impact,sans-serif;--f-brush:"Archivo Black","Arial Black",sans-serif;--f-label:"Oswald","Arial Narrow",sans-serif;--f-body:"Barlow",system-ui,sans-serif;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:#101010;color:var(--white);font:400 1rem/1.55 var(--f-body)}
+.wrap{max-width:1180px;margin:0 auto;padding:2.6rem max(16px,env(safe-area-inset-left,0px)) 4rem}
+h1{font:400 clamp(2.2rem,5vw,3.4rem)/1 var(--f-title);text-transform:uppercase;margin:0 0 .5rem}
+h2{font:400 1.9rem/1 var(--f-title);text-transform:uppercase;margin:3rem 0 .4rem}
+.sub{color:var(--muted);margin:0 0 1.4rem;max-width:52rem}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem}
+@media (max-width:820px){.cols{grid-template-columns:1fr}}
+.col-head{display:flex;align-items:baseline;gap:.7rem;margin-bottom:.8rem}
+.col-head b{font:400 1.5rem/1 var(--f-title);text-transform:uppercase}
+.col-head span{font:600 .8rem/1 var(--f-label);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.v1 .col-head b{color:var(--yellow)}
+.v2 .col-head b{color:var(--cyan)}
+
+/* logos solos */
+.stack{display:grid;gap:.8rem}
+.tile{border:1px solid var(--edge);display:grid;place-items:center;padding:1.6rem;min-height:150px;position:relative}
+.tile .lbl{position:absolute;left:.7rem;top:.6rem;font:600 .66rem/1 var(--f-label);letter-spacing:.14em;text-transform:uppercase;color:#8a8a8a}
+.tile img{width:100%;max-width:460px}
+.dark{background:var(--black)}.navy{background:var(--navy)}.light{background:#fff}.light .lbl{color:#777}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
+.avatar{width:150px;height:150px;border-radius:50%;overflow:hidden;display:grid;place-items:center}
+.avatar.v1bg{background:var(--black)}
+.avatar.v1bg img{width:76%}
+.avatar img.full{width:100%;height:100%}
+.sizes{display:flex;align-items:flex-end;gap:1.1rem}
+.sizes small{display:block;text-align:center;font:600 .65rem/1 var(--f-label);letter-spacing:.1em;color:#8a8a8a;margin-top:.35rem}
+.tabbar{display:flex;align-items:center;gap:.5rem;background:#2b2b2b;border-radius:8px 8px 0 0;padding:.5rem .8rem;width:100%;max-width:260px;font:500 .8rem/1 var(--f-body);color:#ddd}
+.tabbar img{width:16px;height:16px}
+
+/* tabla resumen */
+table{width:100%;border-collapse:collapse;margin-top:1rem;font-size:.95rem}
+th,td{text-align:left;padding:.7rem .8rem;border-bottom:1px solid var(--edge);vertical-align:top}
+th{font:600 .75rem/1 var(--f-label);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+td:first-child{font:600 .85rem/1.3 var(--f-label);letter-spacing:.06em;text-transform:uppercase;color:#ddd;width:22%}
+.tbl{overflow-x:auto}
+
+/* maqueta de la web (copia reducida del sitio real) */
+.site{border:1px solid var(--edge);overflow:hidden;background:var(--black);font-size:.86rem}
+.browser{display:flex;align-items:center;gap:.5rem;background:#2b2b2b;padding:.45rem .7rem;font:500 .75rem/1 var(--f-body);color:#ccc}
+.browser .dots{display:flex;gap:4px;margin-right:.3rem}.browser .dots i{width:8px;height:8px;border-radius:50%;background:#555;display:block}
+.browser img{width:14px;height:14px}
+.browser .url{margin-left:auto;color:#888;font-size:.7rem}
+.m-top{background:var(--yellow);color:var(--black);font:600 .62rem/1 var(--f-label);letter-spacing:.06em;text-transform:uppercase;padding:.4rem .8rem;display:flex;justify-content:space-between;gap:.5rem}
+.m-head{display:flex;justify-content:space-between;align-items:center;gap:.6rem;padding:.55rem .8rem;border-bottom:3px solid var(--yellow);background:var(--black)}
+.m-head img{height:34px;width:auto;display:block}
+.m-head nav{display:flex;gap:.8rem;font:500 .62rem/1 var(--f-label);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.m-btn{background:var(--yellow);color:var(--black);font:700 .62rem/1 var(--f-label);letter-spacing:.08em;text-transform:uppercase;padding:.45rem .75rem;clip-path:polygon(6px 0,100% 0,calc(100% - 6px) 100%,0 100%)}
+.m-hero{display:grid;grid-template-columns:1.2fr .8fr;gap:1rem;align-items:center;padding:1.3rem .9rem 1.4rem;background:repeating-linear-gradient(-55deg,transparent 0 18px,rgba(255,255,255,.02) 18px 36px)}
+.m-stripe{display:inline-block;background:var(--red);font:600 .55rem/1 var(--f-label);letter-spacing:.14em;text-transform:uppercase;padding:.3rem .55rem;clip-path:polygon(0 0,100% 0,calc(100% - 6px) 100%,0 100%)}
+.m-h1{font:400 1.75rem/.95 var(--f-title);text-transform:uppercase;margin:.5rem 0 .6rem}
+.m-h1 em{font-style:normal;color:var(--yellow)}
+.m-brush{display:inline-block;background:var(--yellow);color:var(--black);font:400 .62rem/1 var(--f-brush);font-style:italic;text-transform:uppercase;padding:.35rem .7rem;transform:rotate(-2deg)}
+.m-hero figure{margin:0;transform:rotate(2deg)}
+.m-hero figure img{display:block;width:100%;border:2px solid var(--yellow)}
+.m-cat{padding:1rem .9rem 1.2rem;border-top:1px solid var(--edge)}
+.m-cards{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;margin-top:.6rem}
+.m-card{background:var(--coal);border:1px solid var(--edge)}
+.m-card img{display:block;width:100%;aspect-ratio:3/4;object-fit:cover;object-position:top}
+.m-card div{padding:.55rem .6rem .7rem}
+.m-card b{display:block;font:400 .95rem/1 var(--f-title);text-transform:uppercase}
+.m-card span{display:block;margin-top:.5rem;background:var(--yellow);color:var(--black);text-align:center;font:700 .55rem/1 var(--f-label);letter-spacing:.08em;text-transform:uppercase;padding:.4rem}
+.m-foot{display:flex;justify-content:space-between;align-items:center;padding:.7rem .9rem;border-top:3px solid var(--yellow);font:500 .58rem/1 var(--f-label);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.m-foot img{height:22px;width:auto}
+
+/* v2 adaptada: misma web con acentos azules */
+.site.blue .m-top{background:var(--cyan);color:var(--navy)}
+.site.blue .m-head{background:var(--navy);border-bottom-color:var(--cyan)}
+.site.blue .m-btn,.site.blue .m-card span,.site.blue .m-brush{background:var(--cyan);color:var(--navy)}
+.site.blue .m-h1 em{color:var(--cyan)}
+.site.blue .m-hero figure img{border-color:var(--cyan)}
+.site.blue .m-foot{border-top-color:var(--cyan)}
+.site.blue .m-hero,.site.blue .m-cat,.site.blue{background-color:#07111f}
+.site.blue .m-card{background:#0e1c33;border-color:#1f3559}
+.note{margin-top:.7rem;color:var(--muted);font-size:.9rem}
+.note b{color:#fff}
+.verdict{margin-top:2.4rem;border-left:4px solid var(--yellow);padding:.2rem 0 .2rem 1rem;color:#ddd;max-width:56rem}
+.verdict b{color:#fff}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Versión 1 vs versión 2</h1>
+  <p class="sub">Comparativa de las dos propuestas de logo para FerreZamora: primero los logos solos y después cómo se verían en la página web.</p>
+
+  <h2>1 · Los logos solos</h2>
+  <p class="sub">Las mismas piezas de cada versión, al mismo tamaño.</p>
+  <div class="cols">
+    <section class="v1">
+      <div class="col-head"><b>Versión 1</b><span>Estilo afiches · negro, amarillo y rojo</span></div>
+      <div class="stack">
+        <div class="tile dark"><span class="lbl">Horizontal · fondo oscuro</span><img src="version-1/ferrezamora-logo.svg" alt="Versión 1 horizontal sobre negro"></div>
+        <div class="tile light"><span class="lbl">Horizontal · fondo claro</span><img src="version-1/ferrezamora-logo-fondo-claro.svg" alt="Versión 1 horizontal sobre blanco"></div>
+        <div class="duo">
+          <div class="tile dark"><span class="lbl">Foto de perfil</span><div class="avatar v1bg"><img src="version-1/ferrezamora-icono.svg" alt="Versión 1 en foto de perfil"></div></div>
+          <div class="tile dark"><span class="lbl">Tamaños pequeños</span>
+            <div style="display:grid;gap:1rem;justify-items:center">
+              <div class="sizes"><div><img src="version-1/ferrezamora-icono.svg" width="48" height="48" alt=""><small>48</small></div><div><img src="version-1/ferrezamora-icono.svg" width="32" height="32" alt=""><small>32</small></div><div><img src="version-1/ferrezamora-icono.svg" width="16" height="16" alt=""><small>16</small></div></div>
+              <div class="tabbar"><img src="version-1/ferrezamora-icono.svg" alt="">FerreZamora</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="v2">
+      <div class="col-head"><b>Versión 2</b><span>Esencia del logo actual · azul y acero</span></div>
+      <div class="stack">
+        <div class="tile navy"><span class="lbl">Horizontal · fondo oscuro</span><img src="version-2/ferrezamora-v2-horizontal.svg" alt="Versión 2 horizontal sobre azul"></div>
+        <div class="tile light"><span class="lbl">Horizontal · fondo claro</span><img src="version-2/ferrezamora-v2-horizontal-fondo-claro.svg" alt="Versión 2 horizontal sobre blanco"></div>
+        <div class="duo">
+          <div class="tile dark"><span class="lbl">Foto de perfil</span><div class="avatar"><img class="full" src="version-2/ferrezamora-v2-perfil.svg" alt="Versión 2 en foto de perfil"></div></div>
+          <div class="tile dark"><span class="lbl">Tamaños pequeños</span>
+            <div style="display:grid;gap:1rem;justify-items:center">
+              <div class="sizes"><div><img src="version-2/ferrezamora-v2-icono.svg" width="48" height="48" alt=""><small>48</small></div><div><img src="version-2/ferrezamora-v2-icono.svg" width="32" height="32" alt=""><small>32</small></div><div><img src="version-2/ferrezamora-v2-icono.svg" width="16" height="16" alt=""><small>16</small></div></div>
+              <div class="tabbar"><img src="version-2/ferrezamora-v2-icono.svg" alt="">FerreZamora</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="tbl">
+    <table>
+      <thead><tr><th></th><th>Versión 1</th><th>Versión 2</th></tr></thead>
+      <tbody>
+        <tr><td>Reconocimiento</td><td>Imagen nueva. Los clientes actuales tendrían que aprenderla.</td><td>Se reconoce de inmediato como el logo actual de la tienda.</td></tr>
+        <tr><td>Tamaño pequeño</td><td>Muy legible: la tuerca y la F se ven claras incluso a 16 px.</td><td>A 16 px la llave y el martillo se pierden; se ve el rombo con la F.</td></tr>
+        <tr><td>Combina con la web</td><td>Usa los mismos colores y letras que la página y los afiches.</td><td>Azul y acero: contrasta con el negro y amarillo de la página.</td></tr>
+        <tr><td>Impresión</td><td>Colores planos: fácil y barato de imprimir, bordar o pintar en un letrero.</td><td>Usa degradados: se ve mejor en pantalla; para bordado o sello hay que simplificarlo.</td></tr>
+        <tr><td>Carácter</td><td>Fuerte, de trabajo pesado, igual que las marcas que vende.</td><td>Más sobrio y tecnológico; continuidad con lo que ya tiene.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>2 · Integrados en la web</h2>
+  <p class="sub">Encabezado, inicio, catálogo y pie de la página real, reducidos. La versión 2 se muestra dos veces: en la web tal como está hoy y con la web adaptada a sus colores.</p>
+  <div class="cols">
+    <section class="v1">
+      <div class="col-head"><b>Versión 1</b><span>En la web actual</span></div>
+      <div class="site">
+        <div class="browser"><span class="dots"><i></i><i></i><i></i></span><img src="version-1/ferrezamora-icono.svg" alt="">FerreZamora<span class="url">ferrezamora.com</span></div>
+        <div class="m-top"><span>📍 Calle 11 #15-59a, Bogotá</span><span>📞 301 657 4285</span></div>
+        <div class="m-head"><img src="version-1/ferrezamora-logo.svg" alt="Logo versión 1 en el encabezado"><nav><span>Catálogo</span><span>Contacto</span></nav><span class="m-btn">Cotizar</span></div>
+        <div class="m-hero">
+          <div><span class="m-stripe">Ferretería en Bogotá</span><div class="m-h1">Equipos para trabajo <em>pesado</em> y liviano</div><span class="m-brush">Potencia para el trabajo duro</span></div>
+          <figure><img src="../fotos/soldadora-vermont-afiche.jpg" alt=""></figure>
+        </div>
+        <div class="m-cat"><span class="m-stripe">Catálogo</span>
+          <div class="m-cards">
+            <div class="m-card"><img src="../fotos/pulidora-afiche.jpg" alt=""><div><b>Pulidora inalámbrica</b><span>Cotizar por WhatsApp</span></div></div>
+            <div class="m-card"><img src="../fotos/guadana-afiche.jpg" alt=""><div><b>Guadaña a gasolina</b><span>Cotizar por WhatsApp</span></div></div>
+          </div>
+        </div>
+        <div class="m-foot"><img src="version-1/ferrezamora-logo.svg" alt=""><span>© FerreZamora</span></div>
+      </div>
+      <p class="note"><b>Encaja sin cambios:</b> el logo usa los mismos colores, letras y franjas que la página y los afiches.</p>
+    </section>
+
+    <section class="v2">
+      <div class="col-head"><b>Versión 2</b><span>En la web actual</span></div>
+      <div class="site">
+        <div class="browser"><span class="dots"><i></i><i></i><i></i></span><img src="version-2/ferrezamora-v2-icono.svg" alt="">FerreZamora<span class="url">ferrezamora.com</span></div>
+        <div class="m-top"><span>📍 Calle 11 #15-59a, Bogotá</span><span>📞 301 657 4285</span></div>
+        <div class="m-head"><img src="version-2/ferrezamora-v2-horizontal.svg" alt="Logo versión 2 en el encabezado" style="height:42px"><nav><span>Catálogo</span><span>Contacto</span></nav><span class="m-btn">Cotizar</span></div>
+        <div class="m-hero">
+          <div><span class="m-stripe">Ferretería en Bogotá</span><div class="m-h1">Equipos para trabajo <em>pesado</em> y liviano</div><span class="m-brush">Potencia para el trabajo duro</span></div>
+          <figure><img src="../fotos/soldadora-vermont-afiche.jpg" alt=""></figure>
+        </div>
+        <div class="m-cat"><span class="m-stripe">Catálogo</span>
+          <div class="m-cards">
+            <div class="m-card"><img src="../fotos/pulidora-afiche.jpg" alt=""><div><b>Pulidora inalámbrica</b><span>Cotizar por WhatsApp</span></div></div>
+            <div class="m-card"><img src="../fotos/guadana-afiche.jpg" alt=""><div><b>Guadaña a gasolina</b><span>Cotizar por WhatsApp</span></div></div>
+          </div>
+        </div>
+        <div class="m-foot"><img src="version-2/ferrezamora-v2-horizontal.svg" alt="" style="height:30px"><span>© FerreZamora</span></div>
+      </div>
+      <p class="note"><b>Funciona, pero se nota el cambio:</b> el azul del logo es el único color frío en una página negra, amarilla y roja.</p>
+    </section>
+  </div>
+
+  <div class="cols" style="margin-top:1.4rem">
+    <div></div>
+    <section class="v2">
+      <div class="col-head"><b>Versión 2</b><span>Con la web adaptada a azul</span></div>
+      <div class="site blue">
+        <div class="browser"><span class="dots"><i></i><i></i><i></i></span><img src="version-2/ferrezamora-v2-icono.svg" alt="">FerreZamora<span class="url">ferrezamora.com</span></div>
+        <div class="m-top"><span>📍 Calle 11 #15-59a, Bogotá</span><span>📞 301 657 4285</span></div>
+        <div class="m-head"><img src="version-2/ferrezamora-v2-horizontal.svg" alt="Logo versión 2 en el encabezado azul" style="height:42px"><nav><span>Catálogo</span><span>Contacto</span></nav><span class="m-btn">Cotizar</span></div>
+        <div class="m-hero">
+          <div><span class="m-stripe">Ferretería en Bogotá</span><div class="m-h1">Equipos para trabajo <em>pesado</em> y liviano</div><span class="m-brush">Potencia para el trabajo duro</span></div>
+          <figure><img src="../fotos/soldadora-vermont-afiche.jpg" alt=""></figure>
+        </div>
+        <div class="m-cat"><span class="m-stripe">Catálogo</span>
+          <div class="m-cards">
+            <div class="m-card"><img src="../fotos/pulidora-afiche.jpg" alt=""><div><b>Pulidora inalámbrica</b><span>Cotizar por WhatsApp</span></div></div>
+            <div class="m-card"><img src="../fotos/guadana-afiche.jpg" alt=""><div><b>Guadaña a gasolina</b><span>Cotizar por WhatsApp</span></div></div>
+          </div>
+        </div>
+        <div class="m-foot"><img src="version-2/ferrezamora-v2-horizontal.svg" alt="" style="height:30px"><span>© FerreZamora</span></div>
+      </div>
+      <p class="note"><b>Más coherente con el logo,</b> pero los afiches de los productos siguen siendo negros y amarillos, así que el contraste pasa del logo a las fotos.</p>
+    </section>
+  </div>
+
+  <p class="verdict"><b>En resumen:</b> la versión 1 es la que mejor encaja con la página y con los afiches que ya publica la tienda. La versión 2 es la mejor opción si el cliente quiere que sus clientes actuales reconozcan el logo de siempre.</p>
+</div>
+</body>
+</html>
